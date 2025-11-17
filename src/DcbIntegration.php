@@ -47,7 +47,7 @@ class DcbIntegration
 
     $client = new Client();
     $headers = [
-      'datetime' => Carbon::now(),
+      'datetime' => null,
       'Content-Type' => 'application/json',
       'Authorization' => 'Bearer ' . $token,
     ];
