@@ -292,3 +292,5 @@ $res = $client->sendAsync($request)->wait();
 
   }';
 }
+
+}
