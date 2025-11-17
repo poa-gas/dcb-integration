@@ -1,0 +1,42 @@
+{
+    "name": "poagas/dcb-integration",
+    "description": "php wrapper to integration with dcb",
+    "keywords": [
+        "poagas",
+        "dcb-integration"
+    ],
+    "homepage": "https://github.com/poagas/dcb-integration",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Emmanuel Mnzava",
+            "email": "emmanuel@opensource.co.tz",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Poagas\\DcbIntegration\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Poagas\\DcbIntegration\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
