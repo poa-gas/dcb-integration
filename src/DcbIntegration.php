@@ -37,7 +37,7 @@ class DcbIntegration
     $request = new Request('POST', $this->base_url . '/koinetPay/client/v3/authentication/token', $headers, $body);
     $res = $client->sendAsync($request)->wait();
 
-    return json_encode($res->getBody());
+    return $res->getBody()->getContents();
   }
 
 
@@ -53,7 +53,7 @@ class DcbIntegration
     ];
     $request = new Request('GET', $this->base_url . '/koinetPay/aggregator/v3/queryTipsFsps', $headers);
     $res = $client->sendAsync($request)->wait();
-    return json_encode($res->getBody());
+    return $res->getBody()->getContents();
   }
 
   public function account_lookup($token, $accountNo, $institutionCode)
@@ -70,7 +70,7 @@ class DcbIntegration
 }';
     $request = new Request('POST', $this->base_url . '/koinetPay/aggregator/v3/accountLookup', $headers, $body);
     $res = $client->sendAsync($request)->wait();
-    return json_encode($res->getBody());
+    return $res->getBody()->getContents();
   }
 
 
@@ -89,7 +89,7 @@ class DcbIntegration
 }';
     $request = new Request('POST', $this->base_url . '/koinetPay/tips/v3/merchantLookup', $headers, $body);
     $res = $client->sendAsync($request)->wait();
-    return json_encode($res->getBody());
+    return $res->getBody()->getContents();
   }
 
 
@@ -114,7 +114,7 @@ class DcbIntegration
 }';
     $request = new Request('POST', $this->base_url . '/koinetPay/aggregator/v3/transfers', $headers, $body);
     $res = $client->sendAsync($request)->wait();
-    return json_encode($res->getBody());
+    return $res->getBody()->getContents();
   }
 
 
@@ -131,7 +131,7 @@ class DcbIntegration
 }';
     $request = new Request('POST', $this->base_url . '/koinetPay/aggregator/v3/paymentAuthorization', $headers, $body);
     $res = $client->sendAsync($request)->wait();
-    return json_encode($res->getBody());
+    return $res->getBody()->getContents();
   }
 
 
@@ -159,7 +159,7 @@ class DcbIntegration
     $request = new Request('POST', $this->base_url . '/koinetPay/aggregator/v3/merchantPayments', $headers, $body);
     $res = $client->sendAsync($request)->wait();
 
-    return json_encode($res->getBody());
+    return $res->getBody()->getContents();
   }
 
 
@@ -188,7 +188,7 @@ class DcbIntegration
     $res = $client->sendAsync($request)->wait();
 
 
-    return json_encode($res->getBody());
+    return $res->getBody()->getContents();
   }
 
   public function bill_lookup($token,$smartCardNumber,$reference,$billerCode){
@@ -207,7 +207,7 @@ $request = new Request('POST', $this->base_url.'/koinetPay/aggregator/v3/billers
       $res = $client->sendAsync($request)->wait();
 
 
-    return json_encode($res->getBody());
+    return $res->getBody()->getContents();
   }
 
   public function gepg_lookup($token,$controlNo,$amount,$currency){
@@ -226,7 +226,7 @@ $request = new Request('POST', $this->base_url.'/koinetPay/aggregator/v3/billers
 $request = new Request('POST', $this->base_url.'/koinetPay/aggregator/v3/gepgLookup', $headers, $body);
 $res = $client->sendAsync($request)->wait();
 
-    return json_encode($res->getBody());
+    return $res->getBody()->getContents();
   }
   public function biller_codes(){
     return '{{
