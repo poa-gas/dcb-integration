@@ -3,6 +3,7 @@
 namespace Poagas\DcbIntegration;
 
 use Carbon\Carbon;
+use DateTime;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Request;
 
@@ -13,10 +14,14 @@ class DcbIntegration
   protected $base_url;
   protected $client_id;
   protected $client_secret;
+  protected $request_date;
+
 
 
   public function __construct($base_url, $client_id, $client_secret)
   {
+    $dt = new DateTime();
+    $this->request_date=$dt->format('Y-m-d H:i:s');
     $this->base_url = $base_url;
     $this->client_id = $client_id;
     $this->client_secret = $client_secret;
@@ -32,7 +37,9 @@ class DcbIntegration
     ];
     $body = '{
   "clientId": "' . $this->client_id . '",
-  "clientSecret": "' . $this->client_secret . '"
+  "clientSecret": "' . $this->client_secret . '",
+  "datetime":"'.$this->request_date.'"
+
 }';
     $request = new Request('POST', $this->base_url . '/koinetPay/client/v3/authentication/token', $headers, $body);
     $res = $client->sendAsync($request)->wait();
@@ -47,9 +54,10 @@ class DcbIntegration
 
     $client = new Client();
     $headers = [
-      'datetime' => null,
+     "datetime"=>"'.$this->request_date.'",
       'Content-Type' => 'application/json',
       'Authorization' => 'Bearer ' . $token,
+      
     ];
     $request = new Request('GET', $this->base_url . '/koinetPay/aggregator/v3/queryTipsFsps', $headers);
     $res = $client->sendAsync($request)->wait();
@@ -62,7 +70,8 @@ class DcbIntegration
     $client = new Client();
     $headers = [
       'Content-Type' => 'application/json',
-      'Authorization' => 'Bearer ' . $token
+      'Authorization' => 'Bearer ' . $token,
+      "datetime"=>"'.$this->request_date.'"
     ];
     $body = '{
   "accountNo": "' . $accountNo . '",
@@ -81,7 +90,8 @@ class DcbIntegration
     $client = new Client();
     $headers = [
       'Content-Type' => 'application/json',
-      'Authorization' => 'Bearer ' . $token
+      'Authorization' => 'Bearer ' . $token,
+      "datetime"=>"'.$this->request_date.'"
     ];
     $body = '{
   "tillNumber": "' . $tillNumber . '",
@@ -98,7 +108,8 @@ class DcbIntegration
     $client = new Client();
     $headers = [
       'Content-Type' => 'application/json',
-      'Authorization' => 'Bearer ' . $token
+      'Authorization' => 'Bearer ' . $token,
+      "datetime"=>"'.$this->request_date.'"
     ];
     $body = '{
   "sourceAccount": "' . $payload['sourceAccount'] . '",
@@ -123,7 +134,8 @@ class DcbIntegration
     $client = new Client();
     $headers = [
       'Content-Type' => 'application/json',
-      'Authorization' => 'Bearer ' . $token
+      'Authorization' => 'Bearer ' . $token,
+      "datetime"=>"'.$this->request_date.'"
     ];
     $body = '{
   "token": "' . $trans_token . '",
@@ -141,7 +153,8 @@ class DcbIntegration
     $client = new Client();
     $headers = [
       'Content-Type' => 'application/json',
-      'Authorization' => 'Bearer ' . $token
+      'Authorization' => 'Bearer ' . $token,
+      "datetime"=>"'.$this->request_date.'"
     ];
 
     $body = '{
@@ -168,7 +181,8 @@ class DcbIntegration
     $client = new Client();
     $headers = [
       'Content-Type' => 'application/json',
-      'Authorization' => 'Bearer ' . $token
+      'Authorization' => 'Bearer ' . $token,
+      "datetime"=>"'.$this->request_date.'"
     ];
     $body = '{
   "sourceAccount": "' . $payload['sourceAccount'] . '",
@@ -195,7 +209,8 @@ class DcbIntegration
         $client = new Client();
     $headers = [
       'Content-Type' => 'application/json',
-      'Authorization' => 'Bearer ' . $token
+      'Authorization' => 'Bearer ' . $token,
+      "datetime"=>"'.$this->request_date.'"
     ];
 
 $body = '{
@@ -215,7 +230,8 @@ $request = new Request('POST', $this->base_url.'/koinetPay/aggregator/v3/billers
      $client = new Client();
     $headers = [
       'Content-Type' => 'application/json',
-      'Authorization' => 'Bearer ' . $token
+      'Authorization' => 'Bearer ' . $token,
+      "datetime"=>"'.$this->request_date.'"
     ];
 
     $body = '{
