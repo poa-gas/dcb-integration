@@ -96,7 +96,7 @@ class DcbIntegration
     ];
     $body = '{
   "tillNumber": "' . $tillNumber . '",
-  ""merchantCode": "' . $merchantCode . '"
+  "merchantCode": "' . $merchantCode . '"
 }';
 
 Log::info("body ::: ".$body);
