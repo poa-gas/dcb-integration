@@ -94,8 +94,8 @@ class DcbIntegration
       "datetime"=>"'.$this->request_date.'"
     ];
     $body = '{
-  "merchantCode": "' . $tillNumber . '",
-  "institutionCode": "' . $institutionCode . '"
+  "tillNumber": "' . $tillNumber . '",
+  ""merchantCode": "' . $institutionCode . '"
 }';
     $request = new Request('POST', $this->base_url . '/koinetPay/tips/v3/merchantLookup', $headers, $body);
     $res = $client->sendAsync($request)->wait();
