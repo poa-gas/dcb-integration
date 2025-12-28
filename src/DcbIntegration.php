@@ -84,7 +84,7 @@ class DcbIntegration
 
 
 
-  public function merchant_lookup($token, $tillNumber, $institutionCode)
+  public function merchant_lookup($token, $tillNumber, $merchantCode)
   {
 
     $client = new Client();
@@ -95,7 +95,7 @@ class DcbIntegration
     ];
     $body = '{
   "tillNumber": "' . $tillNumber . '",
-  ""merchantCode": "' . $institutionCode . '"
+  ""merchantCode": "' . $merchantCode . '"
 }';
     $request = new Request('POST', $this->base_url . '/koinetPay/tips/v3/merchantLookup', $headers, $body);
     $res = $client->sendAsync($request)->wait();
