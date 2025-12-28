@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use DateTime;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Request;
+use Log;
 
 class DcbIntegration
 {
@@ -97,6 +98,9 @@ class DcbIntegration
   "tillNumber": "' . $tillNumber . '",
   ""merchantCode": "' . $merchantCode . '"
 }';
+
+Log::info("body ::: ".$body);
+
     $request = new Request('POST', $this->base_url . '/koinetPay/tips/v3/merchantLookup', $headers, $body);
     $res = $client->sendAsync($request)->wait();
     return $res->getBody()->getContents();
