@@ -101,7 +101,7 @@ class DcbIntegration
 
 Log::info("body ::: ".$body);
 
-    $request = new Request('POST', $this->base_url . '/koinetPay/tips/v3/merchantLookup', $headers, $body);
+    $request = new Request('POST', $this->base_url . '/koinetPay/aggregator/v3/merchantLookup', $headers, $body);
     $res = $client->sendAsync($request)->wait();
     return $res->getBody()->getContents();
   }
