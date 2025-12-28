@@ -94,7 +94,7 @@ class DcbIntegration
       "datetime"=>"'.$this->request_date.'"
     ];
     $body = '{
-  "tillNumber": "' . $tillNumber . '",
+  "merchantCode": "' . $tillNumber . '",
   "institutionCode": "' . $institutionCode . '"
 }';
     $request = new Request('POST', $this->base_url . '/koinetPay/tips/v3/merchantLookup', $headers, $body);
