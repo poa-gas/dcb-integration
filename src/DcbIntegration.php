@@ -161,19 +161,22 @@ Log::info("body ::: ".$body);
       "datetime"=>"'.$this->request_date.'"
     ];
 
-    $body = '{
-  "sourceAccount": "' . $payload["sourceAccount"] . '",
-  "senderName": "' . $payload["senderName"] . '",
-  ""customerNo": "' . $payload["customerPhone"] . '",
-  "msisdn": "' . $payload["msisdn"] . '",
-  "tillNo": "' . $payload["tillNo"] . '",
-  "amount": "' . $payload["amount"] . '",
-  "purpose": "' . $payload["purpose"] . '",
-  "beneficiaryName": "' . $payload["beneficiaryName"] . '",
-  "merchantCode": "' . $payload["merchantCode"] . '",
-  "reference": "' . $payload["reference"] . '",
-  "callbackUrl": "' . $payload["callbackUrl"] . '"
-}';
+$body = json_encode([
+    "sourceAccount"   => $payload["sourceAccount"],
+    "customerNo"      => $payload["customerPhone"], 
+    "senderName"      => $payload["senderName"],
+    "msisdn"          => $payload["msisdn"],
+    "tillNo"          => $payload["tillNo"],
+    "amount"          => $payload["amount"],
+    "purpose"         => $payload["purpose"],
+    "beneficiaryName" => $payload["beneficiaryName"],
+    "merchantCode"    => $payload["merchantCode"],
+    "description"     => $payload["description"], 
+    "reference"       => $payload["reference"],
+    "callbackUrl"     => $payload["callbackUrl"]
+]);
+Log::info("merchant payment body ::: ".$body);
+
     $request = new Request('POST', $this->base_url . '/koinetPay/aggregator/v3/merchantPayments', $headers, $body);
     $res = $client->sendAsync($request)->wait();
 
