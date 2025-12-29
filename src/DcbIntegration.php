@@ -164,7 +164,8 @@ Log::info("body ::: ".$body);
     $body = '{
   "sourceAccount": "' . $payload["sourceAccount"] . '",
   "senderName": "' . $payload["senderName"] . '",
-  "customerPhone": "' . $payload["customerPhone"] . '",
+  ""customerNo": "' . $payload["customerPhone"] . '",
+  "msisdn": "' . $payload["msisdn"] . '",
   "tillNo": "' . $payload["tillNo"] . '",
   "amount": "' . $payload["amount"] . '",
   "purpose": "' . $payload["purpose"] . '",
