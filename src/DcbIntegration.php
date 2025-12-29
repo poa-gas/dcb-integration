@@ -163,7 +163,7 @@ Log::info("body ::: ".$body);
 
 $body = json_encode([
     "sourceAccount"   => $payload["sourceAccount"],
-    "customerNo"      => $payload["customerPhone"], 
+    "customerNo"      => $payload["customerNo"], 
     "senderName"      => $payload["senderName"],
     "msisdn"          => $payload["msisdn"],
     "tillNo"          => $payload["tillNo"],
